@@ -1,0 +1,77 @@
+html {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+body {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;   
+   height: 800px;
+   width: 80%;
+   font-family: Arial;
+}
+.container {
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.win-zone{
+   background-color: yellow;
+   width: 133px;
+   height: 132.5px;
+   position: absolute;
+   top: 271px;
+   right: -136px;
+   border: black solid 3px;
+}
+.info{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   font-size: 50px;
+}
+table {
+   border-collapse: collapse;
+   width: 800px;
+   height: 800px;
+   padding: 0;
+   display: table;
+}
+td {
+   width: 16.66%;
+   height: 16.66%;
+   border: black solid 3px;
+   padding: 0;
+   cursor: pointer;
+}
+.randomBackgroundColor1 {
+   background-color: #db7aba;
+}
+.randomBackgroundColor2 {
+   background-color: #5ac098;
+}
+.randomBackgroundColor3 {
+   background-color: #ffc851;
+}
+.randomBackgroundColor4 {
+   background-color: #68b3f0;
+}
+.randomBackgroundColor5 {
+   background-color: #8c75d2;
+}
+.randomBackgroundColor6 {
+   background-color: #ff935e;
+}
+.randomBackgroundColor7 {
+   background-color: #f16865;
+}
+.randomBackgroundColor8 {
+   background-color: #ff7d9d;
+}
+.randomBackgroundColor9{
+   background-color: #68c8b7;
+}

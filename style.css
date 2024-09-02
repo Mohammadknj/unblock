@@ -6,10 +6,84 @@ html {
 body {
    display: flex;
    justify-content: space-between;
-   align-items: center;   
+   align-items: center;
    height: 800px;
    width: 80%;
    font-family: Arial;
+   position: relative;
+}
+.starting {
+   position: absolute;
+   width: 90%;
+   height: 80%;
+   z-index: 2;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   font-size: 35px;
+   background-color: #ffffff;
+   border-radius: 10px;
+   top: 14%;
+   left: 5%;
+}
+.starting button {
+   text-align: center;
+   font-size: 35px;
+   background-color: #ffce5d;
+   color: black;
+   border-radius: 30px;
+   border: solid 3px black;
+   padding: 15px;
+   cursor: pointer;
+   transition: all 0.3s;
+}
+.starting button:hover {
+   transform: scale(1.05);
+}
+.blacker{
+   background-color: #333333ce;
+   width: 100%;
+   height: 100%;
+   z-index: 1;
+   position: absolute;
+   display: inline-block;
+}
+.change-level {
+   position: absolute;
+   width: 70%;
+   height: 70%;
+   z-index: 2;
+   display: none;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   font-size: 35px;
+   background-color: #ffffff;
+   border-radius: 10px;
+   top: 18%;
+   left: 15%;
+}
+.buttons{
+   display: flex;
+   justify-content: space-between;
+   width: 40%;
+}
+.change-level .buttons button{
+   text-align: center;
+   font-size: 35px;
+   background-color: #ffce5d;
+   color: black;
+   border-radius: 30px;
+   border: solid 3px black;
+   padding: 8px;
+   cursor: pointer;
+   transition: all 0.3s;
+}
+.change-level .buttons button:hover{
+   transform: scale(1.05);
 }
 .container {
    position: relative;
@@ -17,7 +91,7 @@ body {
    justify-content: space-between;
    align-items: center;
 }
-.win-zone{
+.win-zone {
    background-color: yellow;
    width: 127.88px;
    height: 130.88px;
@@ -26,7 +100,7 @@ body {
    right: -131px;
    border: black solid 3px;
 }
-.info{
+.info {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -47,7 +121,7 @@ td {
    border: black solid 3px;
    padding: 0;
    cursor: pointer;
-   transition: 0.3s;
+   transition: 0.4s;
 }
 .BackgroundColor1 {
    background-color: #db7aba;
@@ -73,6 +147,6 @@ td {
 .BackgroundColor8 {
    background-color: #ff7d9d;
 }
-.BackgroundColor9{
+.BackgroundColor9 {
    background-color: #68c8b7;
 }

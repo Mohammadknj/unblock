@@ -1,6 +1,7 @@
 let nodes = document.querySelectorAll("td");
 let cells = [[], [], [], [], [], []];
 let cnt = 0;
+let Moves = document.querySelector('.moves > h2')
 for (let i = 0; i < 6; i++) {
    for (let j = 0; j < 6; j++) {
       cells[i][j] = nodes[cnt];
@@ -15,16 +16,12 @@ function Check_type(node) {
          if (cells[i][j] == node) {
             row = i;
             col = j;
-            // const computedStyle = window.getComputedStyle(cells[i][j])
-            // nodeColor = computedStyle.background;
             nodeColor = cells[i][j].classList[0];
             break;
          }
       }
    }
    if (nodeColor == null) {
-      // len = 0;
-      // type = "";
       return [0, ""];
    }
    //horizontal
@@ -32,12 +29,6 @@ function Check_type(node) {
    if (col == 0) {
       if (cells[row][1].classList[0] == nodeColor) {
          type = "horizontal";
-         // for(let i=0;i<3;i++){
-         //    if(cells[row][i].style.backgroundColor==nodeColor){
-         //       cnt++
-         //    }else break
-         // }
-         // len = cnt
          if (cells[row][2].classList[0] == nodeColor) len = 3;
          else len = 2;
          return [len, type];
@@ -45,11 +36,6 @@ function Check_type(node) {
    } else if (col == 5) {
       if (cells[row][4].classList[0] == nodeColor) {
          type = "horizontal";
-         // for(let i=5;i>=3;i--){
-         //    if(cells[row][i].style.backgroundColor==nodeColor){
-         //       cnt++
-         //    }else break
-         // }
          if (cells[row][3].classList[0] == nodeColor) len = 3;
          else len = 2;
          return [len, type];
@@ -152,7 +138,6 @@ nodes.forEach((node) => {
          chosen = false;
          len = 0;
          type = "";
-         // cell = node;
       }
    });
 });
@@ -179,6 +164,7 @@ function goUp() {
          cells[topIndex - 1][col].classList = nodeColor;
          cells[topIndex + len - 1][col].classList = "";
          cell = cells[topIndex][col];
+         Moves.innerHTML++
       } else console.log("nocan");
    }
 }
@@ -205,6 +191,7 @@ function goDown() {
          cells[bottomIndex + 1][col].classList = nodeColor;
          cells[bottomIndex - len + 1][col].classList = "";
          cell = cells[bottomIndex][col];
+         Moves.innerHTML++
       } else console.log("nocan");
    }
 }
@@ -231,10 +218,11 @@ function goLeft() {
          cells[row][leftIndex - 1].classList = nodeColor;
          cells[row][leftIndex + len - 1].classList = "";
          cell = cells[row][leftIndex];
+         Moves.innerHTML++
       } else console.log("nocan");
    }
 }
-function goRight(){
+function goRight() {
    if (type == "horizontal") {
       let row, col, rightIndex, nodeColor;
       for (let i = 0; i < 6; i++) {
@@ -257,18 +245,35 @@ function goRight(){
          cells[row][rightIndex + 1].classList = nodeColor;
          cells[row][rightIndex - len + 1].classList = "";
          cell = cells[row][rightIndex];
+         Moves.innerHTML++
       } else console.log("nocan");
    }
 }
+let level = 1
 function Victory(){
+   cells[2][4].classList = ""
    chosen = false
-   console.log("victory")
+   level++
+   setTimeout(() => {
+      document.querySelector('.blacker').style.display='inline-block'
+      document.querySelector('.change-level').style.display='flex'
+   }, 1000);
 }
+document.getElementById("starting-slide-button").addEventListener('click',()=>{
+   document.querySelector('.starting').style.display='none'
+   document.querySelector('.blacker').style.display='none'
+})
+document.getElementById("Retry-level").addEventListener('click',()=>{
+   level--
+   window.location.href = `index${level}.html`
+})
+document.getElementById("Next-level").addEventListener('click',()=>{
+   window.location.href = `index${level}.html`
+})
 document.addEventListener("keydown", (key) => {
    if (chosen) {
       if (key.code == "ArrowUp") {
          goUp();
-         // chosen = false
       } else if (key.code == "ArrowDown") {
          goDown();
       } else if (key.code == "ArrowLeft") {

@@ -17,7 +17,7 @@ function Check_type(node) {
             col = j;
             // const computedStyle = window.getComputedStyle(cells[i][j])
             // nodeColor = computedStyle.background;
-            nodeColor = cells[i][j].classList.item(0);
+            nodeColor = cells[i][j].classList[0];
             break;
          }
       }
@@ -30,7 +30,7 @@ function Check_type(node) {
    //horizontal
    cnt = 0;
    if (col == 0) {
-      if (cells[row][1].classList.item(0) == nodeColor) {
+      if (cells[row][1].classList[0] == nodeColor) {
          type = "horizontal";
          // for(let i=0;i<3;i++){
          //    if(cells[row][i].style.backgroundColor==nodeColor){
@@ -38,50 +38,50 @@ function Check_type(node) {
          //    }else break
          // }
          // len = cnt
-         if (cells[row][2].classList.item(0) == nodeColor) len = 3;
+         if (cells[row][2].classList[0] == nodeColor) len = 3;
          else len = 2;
          return [len, type];
       }
    } else if (col == 5) {
-      if (cells[row][4].classList.item(0) == nodeColor) {
+      if (cells[row][4].classList[0] == nodeColor) {
          type = "horizontal";
          // for(let i=5;i>=3;i--){
          //    if(cells[row][i].style.backgroundColor==nodeColor){
          //       cnt++
          //    }else break
          // }
-         if (cells[row][3].classList.item(0) == nodeColor) len = 3;
+         if (cells[row][3].classList[0] == nodeColor) len = 3;
          else len = 2;
          return [len, type];
       }
    } else {
       if (
-         cells[row][col - 1].classList.item(0) == nodeColor &&
-         cells[row][col + 1].classList.item(0) != nodeColor
+         cells[row][col - 1].classList[0] == nodeColor &&
+         cells[row][col + 1].classList[0] != nodeColor
       ) {
          type = "horizontal";
          for (let i = col; i >= 0; i--) {
-            if (cells[row][i].classList.item(0) == nodeColor) {
+            if (cells[row][i].classList[0] == nodeColor) {
                cnt++;
             } else break;
          }
          len = cnt;
          return [len, type];
       } else if (
-         cells[row][col + 1].classList.item(0) == nodeColor &&
-         cells[row][col - 1].classList.item(0) != nodeColor
+         cells[row][col + 1].classList[0] == nodeColor &&
+         cells[row][col - 1].classList[0] != nodeColor
       ) {
          type = "horizontal";
          for (let i = col; i < 6; i++) {
-            if (cells[row][i].classList.item(0) == nodeColor) {
+            if (cells[row][i].classList[0] == nodeColor) {
                cnt++;
             } else break;
          }
          len = cnt;
          return [len, type];
       } else if (
-         cells[row][col + 1].classList.item(0) == nodeColor &&
-         cells[row][col - 1].classList.item(0) == nodeColor
+         cells[row][col + 1].classList[0] == nodeColor &&
+         cells[row][col - 1].classList[0] == nodeColor
       ) {
          type = "horizontal";
          len = 3;
@@ -92,7 +92,7 @@ function Check_type(node) {
    type = "vertical";
    if (row == 0) {
       for (let i = 0; i <= 2; i++) {
-         if (cells[i][col].classList.item(0) == nodeColor) {
+         if (cells[i][col].classList[0] == nodeColor) {
             cnt++;
          } else break;
       }
@@ -100,7 +100,7 @@ function Check_type(node) {
       return [len, type];
    } else if (row == 5) {
       for (let i = 5; i >= 3; i--) {
-         if (cells[i][col].classList.item(0) == nodeColor) {
+         if (cells[i][col].classList[0] == nodeColor) {
             cnt++;
          } else break;
       }
@@ -108,30 +108,30 @@ function Check_type(node) {
       return [len, type];
    } else {
       if (
-         cells[row - 1][col].classList.item(0) == nodeColor &&
-         cells[row + 1][col].classList.item(0) != nodeColor
+         cells[row - 1][col].classList[0] == nodeColor &&
+         cells[row + 1][col].classList[0] != nodeColor
       ) {
          for (let i = row; i >= 0; i--) {
-            if (cells[i][col].classList.item(0) == nodeColor) {
+            if (cells[i][col].classList[0] == nodeColor) {
                cnt++;
             } else break;
          }
          len = cnt;
          return [len, type];
       } else if (
-         cells[row + 1][col].classList.item(0) == nodeColor &&
-         cells[row - 1][col].classList.item(0) != nodeColor
+         cells[row + 1][col].classList[0] == nodeColor &&
+         cells[row - 1][col].classList[0] != nodeColor
       ) {
          for (let i = row; i < 6; i++) {
-            if (cells[i][col].classList.item(0) == nodeColor) {
+            if (cells[i][col].classList[0] == nodeColor) {
                cnt++;
             } else break;
          }
          len = cnt;
          return [len, type];
       } else if (
-         cells[row + 1][col].classList.item(0) == nodeColor &&
-         cells[row - 1][col].classList.item(0) == nodeColor
+         cells[row + 1][col].classList[0] == nodeColor &&
+         cells[row - 1][col].classList[0] == nodeColor
       ) {
          len = 3;
          return [len, type];
@@ -148,6 +148,11 @@ nodes.forEach((node) => {
          len = length;
          type = TYPE;
          cell = node;
+      }else{
+         chosen = false
+         len = 0;
+         type = '';
+         // cell = node;
       }
    });
 });
@@ -159,18 +164,47 @@ function goUp() {
             if (cells[i][j] == cell) {
                row = i;
                col = j;
-               nodeColor = cells[i][j].classList.item(0);
+               nodeColor = cells[i][j].classList[0];
                break;
             }
          }
       }
       for (let i = row; i >= 0; i--) {
-         if (cells[i][col].classList.item(0) == nodeColor) {
+         if (cells[i][col].classList[0] == nodeColor) {
             topIndex = i;
          } else break;
       }
-      if (topIndex > 0 && cells[topIndex - 1][col].classList.item(0) == null) {
+      if (topIndex > 0 && cells[topIndex - 1][col].classList == '') {
          console.log('can')
+         cells[topIndex - 1][col].classList=nodeColor
+         cells[topIndex + len - 1][col].classList = ''
+         cell = cells[topIndex][col]
+      }else console.log('nocan')
+   }
+}
+function goDown(){
+   if (type == "vertical") {
+      let row, col, bottomIndex, nodeColor;
+      for (let i = 0; i < 6; i++) {
+         for (let j = 0; j < 6; j++) {
+            if (cells[i][j] == cell) {
+               row = i;
+               col = j;
+               nodeColor = cells[i][j].classList[0];
+               break;
+            }
+         }
+      }
+      for (let i = row; i < 6; i++) {
+         if (cells[i][col].classList[0] == nodeColor) {
+            bottomIndex = i;
+         } else break;
+      }
+      if (bottomIndex < 5 && cells[bottomIndex + 1][col].classList == '') {
+         console.log('can')
+         cells[bottomIndex + 1][col].classList=nodeColor
+         cells[bottomIndex - len + 1][col].classList = ''
+         cell = cells[bottomIndex][col]
       }else console.log('nocan')
    }
 }
@@ -178,7 +212,7 @@ document.addEventListener("keydown", (key) => {
    if (chosen) {
       if (key.code == "ArrowUp") {
          goUp();
-         chosen = false
+         // chosen = false
       } else if (key.code == "ArrowDown") {
          goDown();
       } else if (key.code == "ArrowLeft") {

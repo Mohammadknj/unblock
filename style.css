@@ -47,6 +47,7 @@ td {
    border: black solid 3px;
    padding: 0;
    cursor: pointer;
+   transition: 0.3s;
 }
 .BackgroundColor1 {
    background-color: #db7aba;

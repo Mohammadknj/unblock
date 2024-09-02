@@ -19,11 +19,11 @@ body {
 }
 .win-zone{
    background-color: yellow;
-   width: 133px;
-   height: 132.5px;
+   width: 127.88px;
+   height: 130.88px;
    position: absolute;
-   top: 271px;
-   right: -136px;
+   top: 266px;
+   right: -131px;
    border: black solid 3px;
 }
 .info{

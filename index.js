@@ -148,10 +148,10 @@ nodes.forEach((node) => {
          len = length;
          type = TYPE;
          cell = node;
-      }else{
-         chosen = false
+      } else {
+         chosen = false;
          len = 0;
-         type = '';
+         type = "";
          // cell = node;
       }
    });
@@ -174,15 +174,15 @@ function goUp() {
             topIndex = i;
          } else break;
       }
-      if (topIndex > 0 && cells[topIndex - 1][col].classList == '') {
-         console.log('can')
-         cells[topIndex - 1][col].classList=nodeColor
-         cells[topIndex + len - 1][col].classList = ''
-         cell = cells[topIndex][col]
-      }else console.log('nocan')
+      if (topIndex > 0 && cells[topIndex - 1][col].classList == "") {
+         console.log("can");
+         cells[topIndex - 1][col].classList = nodeColor;
+         cells[topIndex + len - 1][col].classList = "";
+         cell = cells[topIndex][col];
+      } else console.log("nocan");
    }
 }
-function goDown(){
+function goDown() {
    if (type == "vertical") {
       let row, col, bottomIndex, nodeColor;
       for (let i = 0; i < 6; i++) {
@@ -200,13 +200,69 @@ function goDown(){
             bottomIndex = i;
          } else break;
       }
-      if (bottomIndex < 5 && cells[bottomIndex + 1][col].classList == '') {
-         console.log('can')
-         cells[bottomIndex + 1][col].classList=nodeColor
-         cells[bottomIndex - len + 1][col].classList = ''
-         cell = cells[bottomIndex][col]
-      }else console.log('nocan')
+      if (bottomIndex < 5 && cells[bottomIndex + 1][col].classList == "") {
+         console.log("can");
+         cells[bottomIndex + 1][col].classList = nodeColor;
+         cells[bottomIndex - len + 1][col].classList = "";
+         cell = cells[bottomIndex][col];
+      } else console.log("nocan");
    }
+}
+function goLeft() {
+   if (type == "horizontal") {
+      let row, col, leftIndex, nodeColor;
+      for (let i = 0; i < 6; i++) {
+         for (let j = 0; j < 6; j++) {
+            if (cells[i][j] == cell) {
+               row = i;
+               col = j;
+               nodeColor = cells[i][j].classList[0];
+               break;
+            }
+         }
+      }
+      for (let i = col; i >= 0; i--) {
+         if (cells[row][i].classList[0] == nodeColor) {
+            leftIndex = i;
+         } else break;
+      }
+      if (leftIndex > 0 && cells[row][leftIndex - 1].classList == "") {
+         console.log("can");
+         cells[row][leftIndex - 1].classList = nodeColor;
+         cells[row][leftIndex + len - 1].classList = "";
+         cell = cells[row][leftIndex];
+      } else console.log("nocan");
+   }
+}
+function goRight(){
+   if (type == "horizontal") {
+      let row, col, rightIndex, nodeColor;
+      for (let i = 0; i < 6; i++) {
+         for (let j = 0; j < 6; j++) {
+            if (cells[i][j] == cell) {
+               row = i;
+               col = j;
+               nodeColor = cells[i][j].classList[0];
+               break;
+            }
+         }
+      }
+      for (let i = col; i < 6; i++) {
+         if (cells[row][i].classList[0] == nodeColor) {
+            rightIndex = i;
+         } else break;
+      }
+      if (rightIndex < 5 && cells[row][rightIndex + 1].classList == "") {
+         console.log("can");
+         cells[row][rightIndex + 1].classList = nodeColor;
+         cells[row][rightIndex - len + 1].classList = "";
+         cell = cells[row][rightIndex];
+      } else console.log("nocan");
+   }
+}
+function Victory(){
+   chosen = false
+   console.log("victory")
 }
 document.addEventListener("keydown", (key) => {
    if (chosen) {
@@ -218,7 +274,12 @@ document.addEventListener("keydown", (key) => {
       } else if (key.code == "ArrowLeft") {
          goLeft();
       } else if (key.code == "ArrowRight") {
-         goRight();
+         if (
+            cells[2][4].classList == "BackgroundColor3" &&
+            cells[2][5].classList == "BackgroundColor3"
+         ) {
+            Victory()
+         } else goRight();
       }
    }
 });

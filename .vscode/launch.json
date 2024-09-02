@@ -8,8 +8,8 @@
          "type": "firefox",
          "request": "launch",
          "reAttach": true,
-         "name": "Launch index.html",
-         "file": "${workspaceFolder}/index.html"
+         "name": "Launch index1.html",
+         "file": "${workspaceFolder}/index1.html"
       },
       // {
       //    "type": "chrome",

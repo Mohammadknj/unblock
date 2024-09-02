@@ -17,7 +17,7 @@ body {
    width: 90%;
    height: 80%;
    z-index: 2;
-   display: flex;
+   display: none;
    justify-content: center;
    flex-direction: column;
    align-items: center;
@@ -48,7 +48,7 @@ body {
    height: 100%;
    z-index: 1;
    position: absolute;
-   display: inline-block;
+   display: none;
 }
 .change-level {
    position: absolute;
@@ -153,4 +153,7 @@ td {
 }
 .BackgroundColor9 {
    background-color: #68c8b7;
+}
+.BackgroundColor10{
+   background-color: #fb90bb;
 }

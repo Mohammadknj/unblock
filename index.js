@@ -1,8 +1,16 @@
-console.log('start')
+console.log("start");
+let path = window.location.pathname;
+let level = "";
+for (let i = 0; i < path.length; i++) {
+   if (path[i] > "0" && path[i] <= "9") {
+      level += path[i];
+   }
+}
+console.log("lvl " + level);
 let nodes = document.querySelectorAll("td");
 let cells = [[], [], [], [], [], []];
 let cnt = 0;
-let Moves = document.querySelector('.moves > h2')
+let Moves = document.querySelector(".moves > h2");
 for (let i = 0; i < 6; i++) {
    for (let j = 0; j < 6; j++) {
       cells[i][j] = nodes[cnt];
@@ -165,7 +173,7 @@ function goUp() {
          cells[topIndex - 1][col].classList = nodeColor;
          cells[topIndex + len - 1][col].classList = "";
          cell = cells[topIndex][col];
-         Moves.innerHTML++
+         Moves.innerHTML++;
       } else console.log("nocan");
    }
 }
@@ -192,7 +200,7 @@ function goDown() {
          cells[bottomIndex + 1][col].classList = nodeColor;
          cells[bottomIndex - len + 1][col].classList = "";
          cell = cells[bottomIndex][col];
-         Moves.innerHTML++
+         Moves.innerHTML++;
       } else console.log("nocan");
    }
 }
@@ -219,7 +227,7 @@ function goLeft() {
          cells[row][leftIndex - 1].classList = nodeColor;
          cells[row][leftIndex + len - 1].classList = "";
          cell = cells[row][leftIndex];
-         Moves.innerHTML++
+         Moves.innerHTML++;
       } else console.log("nocan");
    }
 }
@@ -246,36 +254,42 @@ function goRight() {
          cells[row][rightIndex + 1].classList = nodeColor;
          cells[row][rightIndex - len + 1].classList = "";
          cell = cells[row][rightIndex];
-         Moves.innerHTML++
+         Moves.innerHTML++;
       } else console.log("nocan");
    }
 }
-let level = 1
-function Victory(){
-   cells[2][4].classList = ""
-   document.querySelector('.win-zone').classList.add("BackgroundColor3")
-   chosen = false
-   level++
+if (level == 1) {
+   document.querySelector(".blacker").style.display = "inline-block";
+   document.querySelector(".starting").style.display='flex';
+   document
+      .getElementById("starting-slide-button")
+      .addEventListener("click", () => {
+         document.querySelector(".starting").style.display = "none";
+         document.querySelector(".blacker").style.display = "none";
+      });
+}
+function Victory() {
+   cells[2][4].classList = "";
+   document.querySelector(".win-zone").classList.add("BackgroundColor3");
+   chosen = false;
+   level++;
    setTimeout(() => {
-      document.querySelector('.blacker').style.display='inline-block'
-      document.querySelector('.change-level').style.display='flex'
+      document.querySelector(".blacker").style.display = "inline-block";
+      document.querySelector(".change-level").style.display = "flex";
    }, 1000);
 }
-document.getElementById("starting-slide-button").addEventListener('click',()=>{
-   document.querySelector('.starting').style.display='none'
-   document.querySelector('.blacker').style.display='none'
-})
-document.getElementById("Retry-level").addEventListener('click',()=>{
-   level--
-   console.log('lvl '+level)
+
+document.getElementById("Retry-level").addEventListener("click", () => {
+   level--;
    setTimeout(() => {
-   window.location.href = `index${level}.html`
-}, 1000);
-})
-document.getElementById("Next-level").addEventListener('click',()=>{
-   window.location.href = `index${level}.html`
-   console.log('lvl '+level)
-})
+      window.location.href = `index${level}.html`;
+   }, 1000);
+});
+document.getElementById("Next-level").addEventListener("click", () => {
+   setTimeout(() => {
+      window.location.href = `index${level}.html`;
+   }, 1000);
+});
 document.addEventListener("keydown", (key) => {
    if (chosen) {
       if (key.code == "ArrowUp") {
@@ -289,7 +303,7 @@ document.addEventListener("keydown", (key) => {
             cells[2][4].classList == "BackgroundColor3" &&
             cells[2][5].classList == "BackgroundColor3"
          ) {
-            Victory()
+            Victory();
          } else goRight();
       }
    }

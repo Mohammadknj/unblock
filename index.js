@@ -1,3 +1,4 @@
+console.log('start')
 let nodes = document.querySelectorAll("td");
 let cells = [[], [], [], [], [], []];
 let cnt = 0;
@@ -252,6 +253,7 @@ function goRight() {
 let level = 1
 function Victory(){
    cells[2][4].classList = ""
+   document.querySelector('.win-zone').classList.add("BackgroundColor3")
    chosen = false
    level++
    setTimeout(() => {
@@ -265,10 +267,14 @@ document.getElementById("starting-slide-button").addEventListener('click',()=>{
 })
 document.getElementById("Retry-level").addEventListener('click',()=>{
    level--
+   console.log('lvl '+level)
+   setTimeout(() => {
    window.location.href = `index${level}.html`
+}, 1000);
 })
 document.getElementById("Next-level").addEventListener('click',()=>{
    window.location.href = `index${level}.html`
+   console.log('lvl '+level)
 })
 document.addEventListener("keydown", (key) => {
    if (chosen) {

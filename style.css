@@ -92,13 +92,14 @@ body {
    align-items: center;
 }
 .win-zone {
-   background-color: yellow;
    width: 127.88px;
-   height: 130.88px;
+   height: 131px;
    position: absolute;
    top: 266px;
-   right: -131px;
-   border: black solid 3px;
+   right: -126px;
+   border:#584f4f94 solid 2px;
+   border-left: none;
+   border-right: none;
 }
 .info {
    display: flex;
@@ -118,10 +119,13 @@ table {
 td {
    width: 16.66%;
    height: 16.66%;
-   border: black solid 3px;
+   border:#584f4f94 solid 2px;
    padding: 0;
    cursor: pointer;
    transition: 0.4s;
+}
+#scape{
+   border-right: none;
 }
 .BackgroundColor1 {
    background-color: #db7aba;

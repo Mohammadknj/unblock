@@ -277,6 +277,11 @@ function Victory() {
       document.querySelector(".blacker").style.display = "inline-block";
       document.querySelector(".change-level").style.display = "flex";
    }, 1000);
+   if(level == 7){console.log("asdfcgh")
+      document.querySelector('.change-level > h3').innerHTML='Congratulation,You passed this level<br>But this was the last level; Hope you enjoyed'
+      document.querySelector('.buttons').style.justifyContent='center'
+      document.getElementById("Next-level").style.display='none'
+   }
 }
 
 document.getElementById("Retry-level").addEventListener("click", () => {
